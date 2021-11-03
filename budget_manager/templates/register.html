@@ -1,0 +1,18 @@
+{% extends "main.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+  <div class="content-section col-md-8 col-md-offset-2">
+    <form method="POST">
+      {% csrf_token %}
+      <fieldset class="form-group">
+        {{ form|crispy}}
+      </fieldset>
+      <button class="btn btn-lg btn-primary" type="submit">Sign up</button>
+      <br />
+      <sub><a href="{% url 'login' %}" style="text-decoration: none; color: blue; cursor:pointer;">Already have an account ?</a></sub>
+    </form>
+  </div>
+
+{% endblock content %}

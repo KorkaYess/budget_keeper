@@ -1,0 +1,44 @@
+
+html {
+    font-size: 1rem;
+}
+
+body {
+    background-image: url("background.png");
+}
+
+a.nav.link {
+    margin-right: 15px;
+    color: #4bc3b9;
+}
+
+.card {
+    margin: 30px;
+    width: 500px;
+    height: 150px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.row.login {
+    margin-top: 150px;
+    width: 300px;
+}
+
+.btn.btn-lg.btn-primary {
+    background-color: #4bc3b9;
+    border-color: #4bc3b9;
+}
+
+.btn.btn-lg.btn-primary:hover {
+    background-color: #5cebdf;
+    border-color: #5cebdf;
+}
+
+fieldset.form-group {
+    margin-top: 50px;
+    margin-bottom: 10px;
+}

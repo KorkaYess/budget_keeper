@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  {% if user.is_authenticated %}
+    {% block main %}
+      <!-- Profile budget content -->
+    {% endblock %}
+  {% else %}
+    <div class="card text-center">
+      <div class="card-header">
+        <h4>Anonymous User</h4>
+      </div>
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <p>Log in to your account or create a new one</p>
+          <footer class="blockquote-footer"><em>Who are you wanderer?</em></footer>
+        </blockquote>
+      </div>
+    </div>
+  {% endif %}
+{% endblock content %}
