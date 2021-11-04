@@ -11,12 +11,23 @@ class CategoryAdmin(MPTTModelAdmin):
     mptt_level_indent = 20
 
 
-class IncomeInline(admin.StackedInline):
+class IncomeInline(admin.TabularInline):
     model = Income
     ordering = ['-created']
+    readonly_fields = ['created', 'updated']
+    extra = 1
+    fieldsets = (
+        (None, {
+            'fields': ('category', 'account', 'amount', )
+        }),
+        ('Timestamp', {
+            'classes': ('collapse',),
+            'fields': ('created', 'updated', )
+        }),
+    )
 
 
-class OutcomeInline(admin.StackedInline):
+class OutcomeInline(admin.TabularInline):
     model = Outcome
     ordering = ['-created']
     readonly_fields = ['created', 'updated']
