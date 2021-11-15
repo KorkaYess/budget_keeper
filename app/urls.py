@@ -1,3 +1,5 @@
+import debug_toolbar
+
 from django.contrib import admin
 from django.urls import path, include
 from budget_manager import views
@@ -9,6 +11,7 @@ from django.contrib.auth.views import LoginView
 urlpatterns = [
 
 	path('admin/', admin.site.urls),
+	path('__debug__/', include(debug_toolbar.urls)),
 
 	path('', include('budget_manager.urls')),
 	path('login/', LoginView.as_view(template_name='login.html'), name='login'),

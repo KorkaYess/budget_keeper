@@ -3,9 +3,7 @@
 
 {% block content %}
   {% if user.is_authenticated %}
-    {% block main %}
-      <!-- Profile budget content -->
-    {% endblock %}
+    {% include "account.html" %}
   {% else %}
     <div class="card text-center">
       <div class="card-header">

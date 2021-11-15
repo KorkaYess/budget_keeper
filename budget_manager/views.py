@@ -1,17 +1,25 @@
-from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import AuthenticationForm
-from .forms import UserRegisterForm
-from django.core.mail import send_mail
+from django.shortcuts import render, redirect
 from django.core.mail import EmailMultiAlternatives
+from django.views.generic import DetailView
 from django.template.loader import get_template
-from django.template import Context
+from django.views.generic import TemplateView
+from django.contrib.auth.models import User
+
+from budget_manager.models import Account, ProxyUser
+from budget_manager.forms import UserRegisterForm
 
 
 def index(request):
-	return render(request, 'index.html', {'title':'Home page'})
+	user = ProxyUser.objects.get(id=request.user.id)
+	print(f'WHAT A DIFF BEETWEEN {type(request.user)} AND {type(user)}')
+	context = {
+        'title': 'Home page',
+        'user': user,
+		'total_amount': user.total_budget()
+    }
+
+	return render(request, 'index.html', context)
 
 
 def register(request):
@@ -32,3 +40,13 @@ def register(request):
 	else:
 		form = UserRegisterForm()
 	return render(request, 'register.html', {'form': form, 'title':'Registration'})
+
+
+# class MainPageView(TemplateView):
+#     template_name = "account.html"
+
+#     def get_context_data(self, request, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['user'] = request.user
+
+#         return context

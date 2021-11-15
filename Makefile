@@ -21,3 +21,6 @@ migrate:
 
 freeze:
 	docker-compose exec web pip freeze > requirements.txt
+
+shell:
+	docker-compose exec web python manage.py shell

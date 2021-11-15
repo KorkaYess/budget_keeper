@@ -1,0 +1,46 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'index.css' %}?{% now 'U' %}"/>
+
+
+<div class="container-fluid accounts">
+
+  <!-- <div class="row total">
+    <div class="position-relative overflow-hidden m-md-3 text-center bg-light">
+      <div class="p-lg-5 mx-auto">
+        <h3 class="display-4 fw-normal">The whole budget</h3>
+        <h1 class="display-4 fw-normal">{{ total_amount }} KZT</h1>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="row accounts">
+    <div class="container">
+      <div class="row">
+        {% for account in user.accounts.all %}
+          <div class="card">
+            <h3 class="title">{{ account.name }}</h3>
+            <div class="bar">
+              <div class="emptybar"></div>
+              <div class="filledbar"></div>
+            </div>
+            <div class="circle">
+              <h4 class="title">{{ account.current_amount }} KZT</h4>
+            </svg>
+            </div>
+          </div>
+        {% endfor %}
+        <div class="card budget">
+          <h3 class="title">Current budget</h3>
+          <div class="bar budget">
+            <div class="emptybar"></div>
+            <div class="filledbar"></div>
+          </div>
+          <div class="circle">
+            <h4 class="title">{{ total_amount }} KZT</h4>
+          </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
